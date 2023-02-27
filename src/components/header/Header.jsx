@@ -32,6 +32,14 @@ const Header = () => {
        
   
 }
+const navigationHandler = (type)=>{
+   if(type === 'movie'){
+     navigate('/explore/movie')
+   }else{
+     navigate('/explore/tv')
+   }
+   setMobileMenu(false)
+}
   return (
     <header className={`header ${mobileMenu? "mobileView":""} ${show}`}>
       <ContentWrapper className="contentWrapper">
@@ -39,8 +47,8 @@ const Header = () => {
           <img src={logo} alt="logo"/>
         </div>
         <ul className="menuItems">
-          <li className='menuItem' >Movies</li>
-          <li className='menuItem'>Tv Shows</li>
+          <li className='menuItem' onClick={()=>navigationHandler('movie')}>Movies</li>
+          <li className='menuItem' onClick={()=>navigationHandler('tv')}>Tv Shows</li>
           <li className='menuItem'>
             <HiOutlineSearch onClick={openSearch}/>
             </li>
