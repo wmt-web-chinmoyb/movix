@@ -1,1 +1,40 @@
-
+@import "../../mixins.scss";
+.carouselItem{
+    display: flex;
+    gap:10px;
+    width: 100px;
+    height: 200px;
+    @include md{
+        height: 300px;
+    }
+    .posterBlock{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        
+    }
+    img{
+        width: 250px;
+        height:300px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .textBlock{
+        color:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        .title{
+          text-align: end;
+        }
+        
+        
+    }
+}
+.circleRating{
+    position: absolute;
+    width: 80px;
+    bottom: 20px;
+    left: 20px;
+}
