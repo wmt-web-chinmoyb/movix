@@ -12,10 +12,10 @@
     background-color: rgb(43,43,43);
     margin-top: 10rem;
     width: 30vw;
-    height: 45vh;
     border-radius: 5px;
     background-color: hsla(0,0%,100%,.144);
     padding-top: 10px;
+    margin-bottom: 8rem;
     
     
 }
@@ -37,9 +37,16 @@
     padding: 15px 20px 4px 20px;
 
 } 
-// .remember{
-//     padding: 15px 20px 0 20px;
-// }
+.remember{
+    padding: 0px 25px 0 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.remmberme{
+    color: white;
+    font-weight: 200;
+}
 .ant-input {
     color: white !important;
     
@@ -60,4 +67,17 @@
 .custom-input ::placeholder {
     color: white;
   }
- 
+ .link1{
+    color: white;
+    font-weight: 200;
+ }
+ .link1:hover{
+    color: red;
+ }
+ @media only screen and (max-width: 668px) {
+    .login-card{
+        width: 90vw;
+        margin-bottom: 20rem;
+    }
+    }
+   

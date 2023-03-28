@@ -70,6 +70,14 @@ const Signup = () => {
                     required: true,
                     message: "Please enter your password!",
                   },
+                  {
+                    min: 8,
+                    message: 'Password must be at least 8 characters long',
+                  },
+                  {
+                    pattern: /^(?=.*?[A-Z])(?=.*?[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
+                    message: 'Password must contain at least one uppercase letter and one special character',
+                  }
                 ]}
                 
               >

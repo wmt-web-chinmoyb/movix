@@ -1,12 +1,14 @@
 import React from "react";
 import "./signin.scss";
 import { Form, Input, Button, Checkbox } from "antd";
-import { UserOutlined,KeyOutlined } from "@ant-design/icons";
+import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 const Signin = () => {
   const onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
+    const jsonData = JSON.stringify(values);
+    console.log(jsonData)
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -41,7 +43,6 @@ const Signin = () => {
                   prefix={<UserOutlined />}
                   placeholder="Email"
                   className="custom-input"
-                  
                 />
               </Form.Item>
             </div>
@@ -53,6 +54,7 @@ const Signin = () => {
                     required: true,
                     message: "Please enter your password!",
                   },
+                  
                 ]}
               >
                 <Input.Password
@@ -63,11 +65,10 @@ const Signin = () => {
                 />
               </Form.Item>
             </div>
-            {/* <div className="remember">
-              <Form.Item name="remember" valuePropName="checked">
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item>
-            </div> */}
+            <div className="remember">
+              <Checkbox className="remmberme">Remember me</Checkbox>
+              <Link to="/" className="link1">Forget Password</Link>
+            </div>
             <div className="login-btn">
               <Button
                 type="primary"
@@ -80,14 +81,17 @@ const Signin = () => {
               </Button>
             </div>
           </Form>
-          <div style={{ textAlign: "center", paddingTop: "10px",color:"white" }}>
+          <div
+            style={{ textAlign: "center", paddingTop: "10px", color: "white", fontWeight:'200' }}
+          >
             Need an account?
             <Link
               to="/signup"
-              style={{ textDecoration: "none", color: "white" }}
+              style={{ textDecoration: "none", color: "white",fontWeight:'200' }}
               className="link"
             >
-               {" "}Signup
+              {" "}
+              Signup
             </Link>
           </div>
         </div>
