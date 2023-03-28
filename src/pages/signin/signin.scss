@@ -1,0 +1,63 @@
+.login-main {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   width: 100vw;
+   background-image: url("https://see-show.vercel.app/static/media/BgLogin.6542db3de69ad21a9ab3.jpg");
+   
+
+   
+}
+.login-card{
+    background-color: rgb(43,43,43);
+    margin-top: 10rem;
+    width: 30vw;
+    height: 45vh;
+    border-radius: 5px;
+    background-color: hsla(0,0%,100%,.144);
+    padding-top: 10px;
+    
+    
+}
+.login-title{
+    font-size: 1.5rem;
+    color: white;
+    opacity: 1;
+    text-align: center;
+    padding-top: 30px;
+}
+.login-username{
+    padding: 20px 20px;
+
+}
+.login-password{
+    padding: 15px 20px;
+}
+.login-btn{
+    padding: 15px 20px 4px 20px;
+
+} 
+// .remember{
+//     padding: 15px 20px 0 20px;
+// }
+.ant-input {
+    color: white !important;
+    
+
+}
+.ant-input-affix-wrapper{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none !important;
+    border-radius: 0%;
+    color: white !important;
+    box-shadow: none !important;
+}
+.anticon{
+    color: white;
+}
+.custom-input ::placeholder {
+    color: white;
+  }
+ 

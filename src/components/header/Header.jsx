@@ -6,14 +6,16 @@ import {useNavigation,useLocation, useNavigate} from 'react-router-dom'
 import "./Header.scss"
 import ContentWrapper from '../contentWrapper/ContentWrapper';
 import logo from "../../assets/movix-logo.svg"
+import { Button } from 'antd';
 const Header = () => {
+  const [isLogin,setLogin]=useState(false)
   const [show,setShow]=useState("top")
-  const [lastScrollY,setLastScrollY]=useState(0)
+  
   const [mobileMenu,setMobileMenu]=useState(false)
   const [query,setQuery]=useState("")
   const [showSearch,setShowSearch]=useState(false)
   const navigate=useNavigate()
-  const location=useLocation()
+  
   const openSearch=()=>{
     setMobileMenu(false)
     setShowSearch(true)
@@ -46,13 +48,17 @@ const navigationHandler = (type)=>{
         <div className='logo'>
           <img src={logo} alt="logo"/>
         </div>
-        <ul className="menuItems">
+        {isLogin?<ul className="menuItems">
           <li className='menuItem' onClick={()=>navigationHandler('movie')}>Movies</li>
           <li className='menuItem' onClick={()=>navigationHandler('tv')}>Tv Shows</li>
           <li className='menuItem'>
             <HiOutlineSearch onClick={openSearch}/>
             </li>
-        </ul>
+        </ul>:<ul className="menuItems">
+          <li className='menuItem'><Button type="primary" danger>Signin</Button></li>
+          <li className='menuItem'><Button type="primary" danger>Signup</Button></li>
+          
+        </ul>}
         <div className="mobileMenuItems">
         <HiOutlineSearch onClick={openSearch}/>
         {mobileMenu? <VscChromeClose onClick={()=>setMobileMenu(false)}/>:<SlMenu onClick={openMobileMenu}/>}

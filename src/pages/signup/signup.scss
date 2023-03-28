@@ -1,0 +1,47 @@
+.signup-main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-image: url("https://see-show.vercel.app/static/media/BgLogin.6542db3de69ad21a9ab3.jpg");
+    
+ 
+    
+ }
+ .ant-input {
+    background-color: transparent!important;
+    border: none;
+  }
+ .signup-card{
+     
+     margin-top: 10rem;
+     width: 30vw;
+     height: 67vh;
+     border-radius: 5px;
+     background-color: hsla(0,0%,100%,.144);
+     padding-top: 10px;
+     
+ }
+ .link:hover{
+   color: red!important;
+ }
+     
+ 
+ .login-title{
+     font-size: 2rem;
+     color: white;
+     opacity: 1;
+     text-align: center;
+     padding-top: 10px;
+ }
+ .login-username{
+     padding: 20px 35px 0 35px;
+ 
+ }
+ .login-password{
+     padding: 15px 35px 0 35px; 
+ }
+ .login-btn{
+     padding: 15px 35px 0 35px;
+ 
+ } 
