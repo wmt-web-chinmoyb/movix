@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import "./signup.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const notify = () => toast("Email is already exist!");
+
   const onFinish = (values) => {
     console.log("Success:", values);
+    const existingData = JSON.parse(localStorage.getItem("sign-up-data"));
+    console.log(existingData);
+    let newData;
+    if (existingData) {
+      console.log(existingData, "existing Data");
+      let allEmail = existingData.map((user) => user.email);
+      console.log(allEmail);
+      if (allEmail.includes(values.email)) {
+        notify();
+      } else {
+        newData = [...existingData, values];
+        localStorage.setItem("sign-up-data", JSON.stringify(newData));
+        navigate("/login")
+      }
+    } else {
+      newData = [values];
+      console.log(newData);
+      localStorage.setItem("sign-up-data", JSON.stringify(newData));
+      navigate("/login");
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   return (
     <div className="signup-main">
+      <ToastContainer />
       <div className="signup-card">
         <div className="login-title">Sign Up</div>
         <div>
@@ -72,14 +98,15 @@ const Signup = () => {
                   },
                   {
                     min: 8,
-                    message: 'Password must be at least 8 characters long',
+                    message: "Password must be at least 8 characters long",
                   },
                   {
-                    pattern: /^(?=.*?[A-Z])(?=.*?[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
-                    message: 'Password must contain at least one uppercase letter and one special character',
-                  }
+                    pattern:
+                      /^(?=.*?[A-Z])(?=.*?[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
+                    message:
+                      "Password must contain at least one uppercase letter and one special character",
+                  },
                 ]}
-                
               >
                 <Input.Password
                   size="large"
@@ -93,7 +120,6 @@ const Signup = () => {
               <Form.Item
                 name="confirm"
                 dependencies={["password"]}
-                
                 rules={[
                   {
                     required: true,
@@ -113,23 +139,37 @@ const Signup = () => {
                   }),
                 ]}
               >
-                <Input.Password  size="large" placeholder="Confirm Password" prefix={<KeyOutlined />} className="custom-input"/>
+                <Input.Password
+                  size="large"
+                  placeholder="Confirm Password"
+                  prefix={<KeyOutlined />}
+                  className="custom-input"
+                />
               </Form.Item>
             </div>
             <div className="login-btn">
-              <Button type="primary" htmlType="submit" block danger size="large"> 
+              <Button
+                type="primary"
+                htmlType="submit"
+                block
+                danger
+                size="large"
+              >
                 Submit
               </Button>
             </div>
           </Form>
-          <div style={{ textAlign: "center", paddingTop: "10px",color:"white" }}>
-          Already have an account ?
+          <div
+            style={{ textAlign: "center", paddingTop: "10px", color: "white" }}
+          >
+            Already have an account ?
             <Link
               to="/login"
               style={{ textDecoration: "none", color: "white" }}
               className="link"
             >
-               {" "}Signin
+              {" "}
+              Signin
             </Link>
           </div>
         </div>

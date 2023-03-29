@@ -8,7 +8,11 @@ import ContentWrapper from "../contentWrapper/ContentWrapper";
 import logo from "../../assets/movix-logo.svg";
 import { Button } from "antd";
 const Header = () => {
-  const [isLogin, setLogin] = useState(false);
+  const [isLogin, setLogin] = useState(
+    localStorage.getItem("isLoggedin") || false
+  );
+  const isLoggedin = localStorage.getItem("isLoggedin");
+
   const [show, setShow] = useState("top");
 
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -33,6 +37,10 @@ const Header = () => {
       }, 1000);
     }
   };
+  const deleteStorage = () => {
+    localStorage.removeItem("isLoggedin");
+    navigate("/login")
+  };
   const navigationHandler = (type) => {
     if (type === "movie") {
       navigate("/explore/movie");
@@ -47,17 +55,16 @@ const Header = () => {
     buttonText = "Sign up";
   } else if (location.pathname === "/signup") {
     buttonText = "Sign in";
-  }
-  else if (location.pathname === "/") {
+  } else if (location.pathname === "/") {
     buttonText = "Sign in";
   }
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper className="contentWrapper">
         <div className="logo">
-          <img src={logo} alt="logo" onClick={()=>navigate("/")}/>
+          <img src={logo} alt="logo" onClick={() => navigate("/")} />
         </div>
-        {isLogin ? (
+        {isLoggedin && (
           <ul className="menuItems">
             <li className="menuItem" onClick={() => navigationHandler("movie")}>
               Movies
@@ -68,19 +75,22 @@ const Header = () => {
             <li className="menuItem">
               <HiOutlineSearch onClick={openSearch} />
             </li>
-          </ul>
-        ) : (
-          <ul className="menuItems">
-            <li className="menuItem">
-              <Button type="primary" danger onClick={()=>navigate("/login")}>
-                {buttonText}
+            <li className="menuItem" onClick={() => navigationHandler("movie")}>
+              <Button type="primary" danger onClick={deleteStorage}>
+                Logout
               </Button>
             </li>
-           
           </ul>
         )}
         <div className="mobileMenuItems">
-          {isLogin && <HiOutlineSearch onClick={openSearch} />}
+          {isLoggedin && (
+            <>
+              <HiOutlineSearch onClick={openSearch} />
+              <Button type="primary" danger onClick={deleteStorage}>
+                Logout
+              </Button>
+            </>
+          )}
           {mobileMenu ? (
             <VscChromeClose onClick={() => setMobileMenu(false)} />
           ) : (

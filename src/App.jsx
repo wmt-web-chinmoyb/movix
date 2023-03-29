@@ -13,11 +13,16 @@ import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Signin from "./pages/signin/Signin";
 import Signup from "./pages/signup/Signup";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
+  
   const dispatch = useDispatch();
   const url = useSelector((state) => state.home);
-  console.log(url);
+ 
+  
+
+
   useEffect(() => {
     fetchApiConfig();
     genresCall();
@@ -50,15 +55,43 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/:mediaType/:id" element={<Details />} />
-          <Route path="/search/:query" element={<SearchResult />} />
-          <Route path="/explore/:mediaType" element={<Explore />} />
+          <Route
+            path="/:mediaType/:id"
+            element={
+              <ProtectedRoute>
+                <Details />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/search/:query"
+            element={
+              <ProtectedRoute>
+                <SearchResult />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/explore/:mediaType"
+            element={
+              <ProtectedRoute>
+                <Explore />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
+        { <Footer />}
       </BrowserRouter>
     </div>
   );
