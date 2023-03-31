@@ -10,7 +10,7 @@ import ContentWrapper from "../contentWrapper/ContentWrapper";
 
 
 
-const Carousel = ({ data, loading ,endPoint}) => {
+const Carousel = ({ data, loading ,endPoint, Title}) => {
   const { url } = useSelector((state) => state.home);
   console.log(url, "url ");
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const Carousel = ({ data, loading ,endPoint}) => {
   };
   return (
     <div>
+    {Title && <div>{Title}</div>}
       <Slider {...settings}>
         
         {data?.map((item, i) => {

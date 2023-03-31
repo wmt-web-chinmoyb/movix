@@ -16,12 +16,8 @@ import Signup from "./pages/signup/Signup";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-  
   const dispatch = useDispatch();
   const url = useSelector((state) => state.home);
- 
-  
-
 
   useEffect(() => {
     fetchApiConfig();
@@ -91,7 +87,7 @@ function App() {
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        { <Footer />}
+        {<Footer />}
       </BrowserRouter>
     </div>
   );
