@@ -16,4 +16,11 @@
         font-size: 24px;
         color: var(--black-light);
     }
+    .content {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+        margin-bottom: 50px;
+    }
+
 }

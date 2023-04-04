@@ -7,20 +7,25 @@ import dayjs from "dayjs";
 import CircleRating from "../circleRating/CircleRating";
 import { useNavigate } from "react-router-dom";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
+import Img from "../lazyLoadingImage/Img"
 
 
 
 const Carousel = ({ data, loading ,endPoint, Title}) => {
   const { url } = useSelector((state) => state.home);
-  console.log(url, "url ");
+  
   const navigate = useNavigate();
+  console.log(data,"caro")
   
   const settings = {
     className: "center",
     infinite: true,
     centerPadding: "60px",
     slidesToShow: 5,
-    swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+   swipeToSlide: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -53,8 +58,8 @@ const Carousel = ({ data, loading ,endPoint, Title}) => {
           return (
             <div key={i} className="carouselItem" onClick={()=>navigate(`/${item.media_type || endPoint}/${item.id}`)}>
               <div className="posterBlock">
-                <img src={posterUrl} alt="poster" />
-                <CircleRating rating={item.vote_average.toFixed(1)}/>
+                <Img src={posterUrl} alt="poster" />
+                <div className="circle" ><CircleRating rating={item.vote_average.toFixed(1)} /></div>
               </div>
               <div className="textBlock">
                 <span className="title">{item.title || item.name}</span> 

@@ -1,0 +1,62 @@
+@import "../../mixins.scss";
+
+.explorePage{
+    min-height: 700px;
+    padding-top: 100px;
+    .pageHeader {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        @include md{
+            flex-direction: row;
+        }
+        .filters{
+            display: flex;
+            gap:20px;
+            flex-direction: column;
+            @include md{
+                flex-direction:row;
+            }
+
+        }
+        
+    }
+    .spinner{
+        display: flex;
+        min-height: 600px;
+        justify-content: center;
+        align-items: center;
+    }
+    .content{
+        display:flex;
+        flex-flow: row wrap;
+        gap: 10px;
+        margin-top: 20px;
+        @include md{
+            gap:20px;
+        }
+    }
+    .react-select-container {
+        width: 100%;
+        
+        @include md{
+            min-width: 300px;
+            max-width: 500px;
+        }
+    }
+    .react-select__control{
+        background-color: var(--black-light);
+        border-radius: 20px;
+        box-shadow: none;
+        border: none;
+    }
+    .react-select__single-value{
+        color: white;
+    }
+    .pageTitle{
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+}

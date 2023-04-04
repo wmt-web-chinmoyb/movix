@@ -32,9 +32,14 @@
         
     }
 }
-.circleRating{
+.circle{
     position: absolute;
-    width: 80px;
-    bottom: 20px;
-    left: 20px;
+    background-color: var(--black-light);
+    border-radius: 50%;
+    bottom: 30px;
+    left: 30px;
+    @include md{
+        bottom: px;
+    }
+    
 }

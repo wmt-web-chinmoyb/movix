@@ -64,19 +64,15 @@ const SearchResult = () => {
               <InfiniteScroll
                 className="content"
                 dataLength={data?.results?.length}
-                next={click && fetchNextPageData}
+                next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}
                 loader={<Spin />}
               >
                 {data?.results?.map((result, i) => {
                   if (result.media_type === "person") return;
-                  return <MovieCard key={i} data={result} fromSearch={true} />;
+                  return <MovieCard key={i} data={result} fromSearch={true}  />;
                 })}
-                <div className="btn-loadmore">
-                <Button type="primary" danger onClick={()=>setClick(true)}>
-                  Load more
-                </Button>
-              </div>
+               
               </InfiniteScroll>
               
             </>
