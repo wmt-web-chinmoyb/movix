@@ -1,0 +1,37 @@
+@import "../../mixins.scss";
+.videoPopup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    .videoPlayer {
+        transform: scale(0.6);
+        padding: 4px;
+        @include md {
+            transform: scale(1);
+        }
+    }
+}
+.visible{
+    visibility: visible;
+}
+.closeBtn{
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+.opacityLayer{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height:100%;
+    background-color: rgba(36,38,43,0.6)
+
+}

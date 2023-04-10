@@ -41,7 +41,7 @@
         
         @include md{
             min-width: 300px;
-            max-width: 500px;
+            max-width: 300px;
         }
     }
     .react-select__control{
@@ -59,4 +59,13 @@
         font-weight: 600;
         margin-bottom: 20px;
     }
+}
+.resultNotFound{
+    color: red;
+    display: flex;
+    height: 100vh;
+    font-weight: 500;
+    justify-content:center;
+    padding-top: 100px;
+    font-size: 24px;
 }

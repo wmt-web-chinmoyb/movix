@@ -144,7 +144,7 @@ const DetailsBanner = ({ video, crew }) => {
             </ContentWrapper>
           </div>
           <div style={{margin:"20px"}}>
-            <VideoPopup show={show} setVideoId={setVideoId} videoId={videoId} />
+            <VideoPopup show={show} setVideoId={setVideoId} videoId={videoId} setShow={setShow} />
           </div>
         </>
       ) : (
